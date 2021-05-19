@@ -13,10 +13,11 @@ export async function ClienteInsert(req: Request, res: Response) {
         let poolConnect = await new sql.ConnectionPool(sqlConfig).connect()
 
         const result = await poolConnect.request()
-            .input('id', sql.Int, cliente.id)
+            .input('id', sql.VarChar(64), cliente.id)
             .input('nombre', sql.VarChar(20), cliente.nombre)
             .input('telefono', sql.VarChar(20), cliente.telefono)
             .input('direccion', sql.VarChar(40), cliente.direccion)
+            .input('dni', sql.VarChar(15), cliente.dni)
             .execute('ClienteInsert')
 
         console.dir(result);

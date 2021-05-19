@@ -1,6 +1,7 @@
 import express, {Application} from 'express'
 import IndexRoute from './routes/index.route'
 import ClienteRoute from './routes/cliente.route'
+import cors from 'cors'
 
 export class App {
     app: Application;
@@ -15,6 +16,7 @@ export class App {
     private middlewares() {
         // this.app.use(morgan('dev'));
         this.app.use(express.json());
+        this.app.use(cors())
     }
 
     private settings() {
